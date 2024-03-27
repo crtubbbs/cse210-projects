@@ -16,3 +16,4 @@ class Reference
             _CTEndVerse = int.Parse(_CTParts[3]);
     }
 }
+
