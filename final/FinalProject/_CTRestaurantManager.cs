@@ -65,159 +65,192 @@ class _CTRestaurantManager
         }
     }
 
-private void _CTManageMenu() 
-{ 
-    // Menu management functionality 
-    Console.WriteLine("Menu Management");
-    Console.WriteLine("1. Add Menu Item");
-    Console.WriteLine("2. Edit Menu Item");
-    Console.WriteLine("3. Remove Menu Item");
-    Console.WriteLine("4. Back to Main Menu");
-    Console.Write("Enter your choice: ");
-    string choice = Console.ReadLine();
-
-    switch (choice)
+    private void _CTManageMenu()
     {
-        case "1":
-            // Add Menu Item functionality
-            Console.WriteLine("Adding a new menu item...");
-            // Implement code to add a new menu item
-            break;
-        case "2":
-            // Edit Menu Item functionality
-            Console.WriteLine("Editing a menu item...");
-            // Implement code to edit an existing menu item
-            break;
-        case "3":
-            // Remove Menu Item functionality
-            Console.WriteLine("Removing a menu item...");
-            // Implement code to remove an existing menu item
-            break;
-        case "4":
-            // Return to main menu
-            break;
-        default:
-            Console.WriteLine("Invalid choice. Please try again.");
-            break;
+        // Menu management functionality
+        Console.WriteLine("Menu Management");
+        Console.WriteLine("1. Add Menu Item");
+        Console.WriteLine("2. Edit Menu Item");
+        Console.WriteLine("3. Remove Menu Item");
+        Console.WriteLine("4. Back to Main Menu");
+        Console.Write("Enter your choice: ");
+        string choice = Console.ReadLine();
+
+        switch (choice)
+        {
+            case "1":
+                // Add Menu Item functionality
+                Console.WriteLine("Adding a new menu item...");
+                Console.Write("Enter item name: ");
+                string itemName = Console.ReadLine();
+                Console.Write("Enter item price: ");
+                decimal itemPrice = decimal.Parse(Console.ReadLine());
+                _CTMenuItem newItem = new _CTMenuItem(itemName, itemPrice);
+                _CTMenu.Add(newItem);
+                Console.WriteLine("Menu item added successfully.");
+                break;
+            case "2":
+                // Edit Menu Item functionality
+                Console.WriteLine("Editing a menu item...");
+                Console.WriteLine("Enter the name of the item to edit: ");
+                string itemNameToEdit = Console.ReadLine();
+                _CTMenuItem itemToEdit = _CTMenu.Find(item => item._CTName == itemNameToEdit);
+                if (itemToEdit != null)
+                {
+                    Console.WriteLine("Enter new name for the item: ");
+                    string newItemName = Console.ReadLine();
+                    Console.WriteLine("Enter new price for the item: ");
+                    decimal newItemPrice = decimal.Parse(Console.ReadLine());
+                    itemToEdit._CTName = newItemName;
+                    itemToEdit._CTPrice = newItemPrice;
+                    Console.WriteLine("Menu item edited successfully.");
+                }
+                else
+                {
+                    Console.WriteLine("Item not found in the menu.");
+                }
+                break;
+            case "3":
+                // Remove Menu Item functionality
+                Console.WriteLine("Removing a menu item...");
+                Console.WriteLine("Enter the name of the item to remove: ");
+                string itemNameToRemove = Console.ReadLine();
+                _CTMenuItem itemToRemove = _CTMenu.Find(item => item._CTName == itemNameToRemove);
+                if (itemToRemove != null)
+                {
+                    _CTMenu.Remove(itemToRemove);
+                    Console.WriteLine("Menu item removed successfully.");
+                }
+                else
+                {
+                    Console.WriteLine("Item not found in the menu.");
+                }
+                break;
+            case "4":
+                // Return to main menu
+                break;
+            default:
+                Console.WriteLine("Invalid choice. Please try again.");
+                break;
+        }
     }
-}
 
-private void _CTPlaceOrder() 
-{ 
-    // Order placement functionality 
-    Console.WriteLine("Placing an Order");
-    // Implement code to take orders from customers
-}
-
-private void _CTManageInventory() 
-{ 
-    // Inventory management functionality 
-    Console.WriteLine("Inventory Management");
-    Console.WriteLine("1. Add Inventory Item");
-    Console.WriteLine("2. Edit Inventory Item");
-    Console.WriteLine("3. Remove Inventory Item");
-    Console.WriteLine("4. Back to Main Menu");
-    Console.Write("Enter your choice: ");
-    string choice = Console.ReadLine();
-
-    switch (choice)
+    private void _CTPlaceOrder()
     {
-        case "1":
-            // Add Inventory Item functionality
-            Console.WriteLine("Adding a new inventory item...");
-            // Implement code to add a new inventory item
-            break;
-        case "2":
-            // Edit Inventory Item functionality
-            Console.WriteLine("Editing an inventory item...");
-            // Implement code to edit an existing inventory item
-            break;
-        case "3":
-            // Remove Inventory Item functionality
-            Console.WriteLine("Removing an inventory item...");
-            // Implement code to remove an existing inventory item
-            break;
-        case "4":
-            // Return to main menu
-            break;
-        default:
-            Console.WriteLine("Invalid choice. Please try again.");
-            break;
+        // Order placement functionality
+        Console.WriteLine("Placing an Order");
+        // Implement code to take orders from customers
     }
-}
 
-private void _CTViewSalesReport() 
-{ 
-    // View sales report functionality 
-    Console.WriteLine("Viewing Sales Report");
-    // Implement code to display sales reports
-}
-
-private void _CTManageStaff() 
-{ 
-    // Staff management functionality 
-    Console.WriteLine("Staff Management");
-    Console.WriteLine("1. Add Staff Member");
-    Console.WriteLine("2. Edit Staff Member");
-    Console.WriteLine("3. Remove Staff Member");
-    Console.WriteLine("4. Back to Main Menu");
-    Console.Write("Enter your choice: ");
-    string choice = Console.ReadLine();
-
-    switch (choice)
+    private void _CTManageInventory()
     {
-        case "1":
-            // Add Staff Member functionality
-            Console.WriteLine("Adding a new staff member...");
-            // Implement code to add a new staff member
-            break;
-        case "2":
-            // Edit Staff Member functionality
-            Console.WriteLine("Editing a staff member...");
-            // Implement code to edit an existing staff member
-            break;
-        case "3":
-            // Remove Staff Member functionality
-            Console.WriteLine("Removing a staff member...");
-            // Implement code to remove an existing staff member
-            break;
-        case "4":
-            // Return to main menu
-            break;
-        default:
-            Console.WriteLine("Invalid choice. Please try again.");
-            break;
+        // Inventory management functionality
+        Console.WriteLine("Inventory Management");
+        Console.WriteLine("1. Add Inventory Item");
+        Console.WriteLine("2. Edit Inventory Item");
+        Console.WriteLine("3. Remove Inventory Item");
+        Console.WriteLine("4. Back to Main Menu");
+        Console.Write("Enter your choice: ");
+        string choice = Console.ReadLine();
+
+        switch (choice)
+        {
+            case "1":
+                // Add Inventory Item functionality
+                Console.WriteLine("Adding a new inventory item...");
+                // Implement code to add a new inventory item
+                break;
+            case "2":
+                // Edit Inventory Item functionality
+                Console.WriteLine("Editing an inventory item...");
+                // Implement code to edit an existing inventory item
+                break;
+            case "3":
+                // Remove Inventory Item functionality
+                Console.WriteLine("Removing an inventory item...");
+                // Implement code to remove an existing inventory item
+                break;
+            case "4":
+                // Return to main menu
+                break;
+            default:
+                Console.WriteLine("Invalid choice. Please try again.");
+                break;
+        }
     }
-}
 
-private void _CTManageTables() 
-{ 
-    // Table management functionality 
-    Console.WriteLine("Table Management");
-    Console.WriteLine("1. Mark Table as Occupied");
-    Console.WriteLine("2. Mark Table as Available");
-    Console.WriteLine("3. Back to Main Menu");
-    Console.Write("Enter your choice: ");
-    string choice = Console.ReadLine();
-
-    switch (choice)
+    private void _CTViewSalesReport()
     {
-        case "1":
-            // Mark Table as Occupied functionality
-            Console.WriteLine("Marking a table as occupied...");
-            // Implement code to mark a table as occupied
-            break;
-        case "2":
-            // Mark Table as Available functionality
-            Console.WriteLine("Marking a table as available...");
-            // Implement code to mark a table as available
-            break;
-        case "3":
-            // Return to main menu
-            break;
-        default:
-            Console.WriteLine("Invalid choice. Please try again.");
-            break;
+        // View sales report functionality
+        Console.WriteLine("Viewing Sales Report");
+        // Implement code to display sales reports
     }
-}
+
+    private void _CTManageStaff()
+    {
+        // Staff management functionality
+        Console.WriteLine("Staff Management");
+        Console.WriteLine("1. Add Staff Member");
+        Console.WriteLine("2. Edit Staff Member");
+        Console.WriteLine("3. Remove Staff Member");
+        Console.WriteLine("4. Back to Main Menu");
+        Console.Write("Enter your choice: ");
+        string choice = Console.ReadLine();
+
+        switch (choice)
+        {
+            case "1":
+                // Add Staff Member functionality
+                Console.WriteLine("Adding a new staff member...");
+                // Implement code to add a new staff member
+                break;
+            case "2":
+                // Edit Staff Member functionality
+                Console.WriteLine("Editing a staff member...");
+                // Implement code to edit an existing staff member
+                break;
+            case "3":
+                // Remove Staff Member functionality
+                Console.WriteLine("Removing a staff member...");
+                // Implement code to remove an existing staff member
+                break;
+            case "4":
+                // Return to main menu
+                break;
+            default:
+                Console.WriteLine("Invalid choice. Please try again.");
+                break;
+        }
+    }
+
+    private void _CTManageTables()
+    {
+        // Table management functionality
+        Console.WriteLine("Table Management");
+        Console.WriteLine("1. Mark Table as Occupied");
+        Console.WriteLine("2. Mark Table as Available");
+        Console.WriteLine("3. Back to Main Menu");
+        Console.Write("Enter your choice: ");
+        string choice = Console.ReadLine();
+
+        switch (choice)
+        {
+            case "1":
+                // Mark Table as Occupied functionality
+                Console.WriteLine("Marking a table as occupied...");
+                // Implement code to mark a table as occupied
+                break;
+            case "2":
+                // Mark Table as Available functionality
+                Console.WriteLine("Marking a table as available...");
+                // Implement code to mark a table as available
+                break;
+            case "3":
+                // Return to main menu
+                break;
+            default:
+                Console.WriteLine("Invalid choice. Please try again.");
+                break;
+        }
+    }
 }

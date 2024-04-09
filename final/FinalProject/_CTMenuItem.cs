@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 class _CTMenuItem
 {
-    public string _CTName { get; private set; }
-    public decimal _CTPrice { get; private set; }
+    public string _CTName { get; set; } // Change to public set
+    public decimal _CTPrice { get; set; } // Change to public set
 
     public _CTMenuItem(string _CTName, decimal _CTPrice)
     {
